@@ -17,6 +17,22 @@ header{
     background-image: url(/assets/banner.jpg);
     background-size: cover;
     background-position: center;
+    position: relative;
+    color:white;
+}
+
+header>*{
+    z-index: 12;
+}
+
+header::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color:rgba(0,0,0,0.7);
 }
 
 .profile-image{
@@ -36,6 +52,22 @@ header{
 
 .subtext{
     margin-top: 8px;
+}
+
+.main{
+    background-color: yellow;
+    height: 100px;
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container{
+    max-width: 750px;
+    min-width: 600px;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 footer {
