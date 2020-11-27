@@ -7,18 +7,27 @@ class Post{
         return this.readData();
     }
 
-    getIndividualBlog(){
-
+    getIndividualBlog(postid){
+        const posts=this.readData();
+        const foundPost=posts.find((post)=>post.id==postid);
+        return foundPost;
     }
 
-    add(){
-
+    add(newPost){
+        const currentPosts = this.readData();
+        currentPosts.unshift(newPost);
+        this.storeData(currentPosts);
     }
 
     readData(){
         let rawdata=fs.readFileSync(PATH);
         let posts=JSON.parse(rawdata);
         return posts;
+    }
+
+    storeData(rawData){
+        let data=JSON.stringify(rawData);
+        fs.writeFileSync(PATH, data);
     }
 }
 
