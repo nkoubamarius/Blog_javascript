@@ -7,9 +7,18 @@ var storage = multer.diskStorage({
       cb(null, './uploads')
     },
     filename: function (req, file, cb) {
-      cb(null, `${file.fieldname}-${Date.now()}.jpg`)
+      cb(null, `${file.fieldname}-${Date.now()}${getExt(file.mimetype)}`)
     }
 });
+
+const getExt=(mineType)=>{
+    switch(mineType){
+        case "image/png":
+            return ".png";
+        case "image/jpeg":
+            return ".jpeg";
+    }
+}
    
 var upload = multer({ storage: storage });
 
@@ -47,7 +56,7 @@ app.post('/api/posts',upload.single("post-image"),(req, res)=>{
         "id": `${Date.now()}`,
         "title": req.body.title,
         "content": req.body.content,
-        "post_image":req.body["post-image"],
+        "post_image":req.file.path,
         "added-date":`${Date.now()}`
     }
 
