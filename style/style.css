@@ -14,11 +14,14 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(/assets/banner.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
     color:white;
+}
+
+.home-page header{
+    background-image: url(/assets/banner.jpg);
 }
 
 header>*{
@@ -75,6 +78,7 @@ header::after{
     border-radius: 10px;
     transition: all 0.25s ease-in-out;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .post:hover{
@@ -159,4 +163,8 @@ footer {
     border: 1px solid #004186;
     padding: 5px 8px;
     border-radius: 5px;
+}
+
+a.post-link{
+text-decoration: none;
 }

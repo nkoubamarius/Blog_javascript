@@ -1,7 +1,17 @@
 const express=require("express");
 const Post=require("./models/posts");
+var cors = require('cors');
 const postData=new Post();
 const app=express();
+
+// app.use(cors());
+
+app.use((req, res, next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+});
+
+app.use('/uploads', express.static('uploads'));
 
 app.get("/api/posts", (req,res)=>{
     res.status(200).send(postData.get());
